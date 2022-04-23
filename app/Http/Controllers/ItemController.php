@@ -36,7 +36,7 @@ class ItemController extends Controller
         }
     }
 
-    public function update(Request $request, $id) {
+    public function update(Request $request, int $id) {
         try {
             $item = Item::findOrFail($id);
 
@@ -63,7 +63,7 @@ class ItemController extends Controller
         }
     }
 
-    public function delete($id) {
+    public function delete(int $id) {
         try {
             $item = Item::findOrFail($id);
 
@@ -79,7 +79,7 @@ class ItemController extends Controller
         }
     }
 
-    public function acquire($id) {
+    public function acquire(int $id) {
         try {
             $item = Item::findOrFail($id);
 
@@ -105,7 +105,7 @@ class ItemController extends Controller
         }
     }
 
-    public function archive($id) {
+    public function archive(int $id) {
         try {
             $item = Item::findOrFail($id);
             $item->archived = true;
@@ -122,7 +122,7 @@ class ItemController extends Controller
         }
     }
 
-    public function unarchive($id) {
+    public function unarchive(int $id) {
         try {
             $item = Item::findOrFail($id);
             $item->archived = false;
