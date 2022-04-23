@@ -19,3 +19,6 @@
 ## Тестирование API
 * Все маршруты находятся в `routes/web.php`
 * Контроллер находится в `Http/Controllers/ItemController.php`
+* Создание фейковых элементов:
+    * `php artisan tinker`
+    * `App\Models\Item::factory()->count(10)->create()`
