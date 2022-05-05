@@ -27,11 +27,14 @@ class ItemController extends Controller
                 ]);
             }
         } catch (\Exception $e) {
-            return response()->json(['status' => 'error', 'message' => $e->getMessage()]);
+            return response()->json([
+                'status' => 'error',
+                'message' => 'К сожалению, данный элемент не удалось сохранить ;('
+            ]);
         }
     }
 
-    public function update(Request $request, int $id) {
+    public function update(Request $request, Int $id) {
         try {
             $item = Item::findOrFail($id);
 
@@ -54,11 +57,14 @@ class ItemController extends Controller
                 ]);
             }
         } catch (\Exception $e) {
-            return response()->json(['status' => 'error', 'message' => $e->getMessage()]);
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Похоже, такого элемента не существует.'
+            ]);
         }
     }
 
-    public function delete(int $id) {
+    public function delete(Int $id) {
         try {
             $item = Item::findOrFail($id);
 
@@ -70,11 +76,14 @@ class ItemController extends Controller
                 ]);
             }
         } catch (\Exception $e) {
-            return response()->json(['status' => 'error', 'message' => $e->getMessage()]);
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Похоже, такого элемента не существует.'
+            ]);
         }
     }
 
-    public function acquire(int $id) {
+    public function acquire(Int $id) {
         try {
             $item = Item::findOrFail($id);
 
@@ -96,11 +105,14 @@ class ItemController extends Controller
                 ]);
             }
         } catch (\Exception $e) {
-            return response()->json(['status' => 'error', 'message' => $e->getMessage()]);
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Похоже, такого элемента не существует.'
+            ]);
         }
     }
 
-    public function toggleArchive(int $id) {
+    public function toggleArchive(Int $id) {
         try {
             $item = Item::findOrFail($id);
             $item->archived = !$item->archived;
@@ -115,7 +127,10 @@ class ItemController extends Controller
                 ]);
             }
         } catch (\Exception $e) {
-            return response()->json(['status' => 'error', 'message' => $e->getMessage()]);
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Похоже, такого элемента не существует.'
+            ]);
         }
     }
 }
