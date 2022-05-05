@@ -13,10 +13,10 @@
 * Переименуйте `.env.example` в `.env`
 * Создайте файл `database.sqlite` внутри папки `database`
 * Выполните команду `php artisan key:generate`
+* Выполните команду `php artisan migrate`
 
 ## Запуск приложения
 
-* Выполните команду `php artisan migrate`
 * Выполните команду `php -S localhost:8000 -t public`
 
 ## Тестирование API

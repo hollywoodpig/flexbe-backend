@@ -12,11 +12,6 @@ class ItemController extends Controller
         return Item::all();
     }
 
-    public function archived()
-    {
-        return Item::where('archived', '=', true)->get();
-    }
-
     public function store(Request $request)
     {
         try {
@@ -105,33 +100,18 @@ class ItemController extends Controller
         }
     }
 
-    public function archive(int $id) {
+    public function toggleArchive(int $id) {
         try {
             $item = Item::findOrFail($id);
-            $item->archived = true;
+            $item->archived = !$item->archived;
 
             if ($item->save())
             {
                 return response()->json([
                     'status' => 'success',
-                    'message' => 'Элемент был успешно помещен в архив.'
-                ]);
-            }
-        } catch (\Exception $e) {
-            return response()->json(['status' => 'error', 'message' => $e->getMessage()]);
-        }
-    }
-
-    public function unarchive(int $id) {
-        try {
-            $item = Item::findOrFail($id);
-            $item->archived = false;
-
-            if ($item->save())
-            {
-                return response()->json([
-                    'status' => 'success',
-                    'message' => 'Элемент был успешно убран из архива.'
+                    'message' => $item->archived
+                      ? 'Элемент был успешно помещен в архив.'
+                      : 'Элемент был успешно убран из архива.'
                 ]);
             }
         } catch (\Exception $e) {

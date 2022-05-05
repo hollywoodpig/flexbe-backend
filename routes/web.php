@@ -23,7 +23,5 @@ $router->group(['prefix' => 'api'], function () use ($router) {
     $router->put('items/{id}', 'ItemController@update');
     $router->delete('items/{id}', 'ItemController@delete');
     $router->put('items/acquire/{id}', 'ItemController@acquire');
-    $router->get('items/archive', 'ItemController@archived');
-    $router->put('items/archive/{id}', 'ItemController@archive');
-    $router->put('items/unarchive/{id}', 'ItemController@unarchive');
+    $router->put('items/archive/{id}', 'ItemController@toggleArchive');
 });
